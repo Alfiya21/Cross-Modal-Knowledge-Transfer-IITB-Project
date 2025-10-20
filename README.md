@@ -89,5 +89,4 @@ Implement adversarial domain adaptation or contrastive learning.
 - Compare classic distillation vs. adversarial and contrastive learning  
 
 
-## File & Code Organization
 

@@ -1,0 +1,212 @@
+[
+  {
+    "modality": "EEG",
+    "n_features": 12,
+    "rf_cv_accuracy": 0.7607963875205255,
+    "rf_cv_f1_macro": 0.4419177959732382,
+    "rf_test_accuracy": 0.7620689655172413,
+    "rf_test_f1_macro": 0.4324853228962818,
+    "rf_model_path": "C:\\Users\\alfiy\\ByteBuzz\\Notebooks\\models\\baseline_EEG_rf_20251017_224420.joblib",
+    "xgb_cv_accuracy": null,
+    "xgb_cv_f1_macro": null,
+    "xgb_test_accuracy": null,
+    "xgb_test_f1_macro": null,
+    "xgb_model_path": null,
+    "rf_classification_report": {
+      "0": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 66.0
+      },
+      "1": {
+        "precision": 0.7700348432055749,
+        "recall": 0.9866071428571429,
+        "f1-score": 0.8649706457925636,
+        "support": 224.0
+      },
+      "accuracy": 0.7620689655172413,
+      "macro avg": {
+        "precision": 0.38501742160278746,
+        "recall": 0.49330357142857145,
+        "f1-score": 0.4324853228962818,
+        "support": 290.0
+      },
+      "weighted avg": {
+        "precision": 0.5947855340622372,
+        "recall": 0.7620689655172413,
+        "f1-score": 0.6681152574397732,
+        "support": 290.0
+      }
+    },
+    "xgb_classification_report": null
+  },
+  {
+    "modality": "EYE",
+    "n_features": 4,
+    "rf_cv_accuracy": 0.730594118525153,
+    "rf_cv_f1_macro": 0.4963561980439678,
+    "rf_test_accuracy": 0.7310344827586207,
+    "rf_test_f1_macro": 0.477549889135255,
+    "rf_model_path": "C:\\Users\\alfiy\\ByteBuzz\\Notebooks\\models\\baseline_EYE_rf_20251017_224420.joblib",
+    "xgb_cv_accuracy": null,
+    "xgb_cv_f1_macro": null,
+    "xgb_test_accuracy": null,
+    "xgb_test_f1_macro": null,
+    "xgb_model_path": null,
+    "rf_classification_report": {
+      "0": {
+        "precision": 0.22727272727272727,
+        "recall": 0.07575757575757576,
+        "f1-score": 0.11363636363636363,
+        "support": 66.0
+      },
+      "1": {
+        "precision": 0.7723880597014925,
+        "recall": 0.9241071428571429,
+        "f1-score": 0.8414634146341463,
+        "support": 224.0
+      },
+      "accuracy": 0.7310344827586207,
+      "macro avg": {
+        "precision": 0.4998303934871099,
+        "recall": 0.49993235930735935,
+        "f1-score": 0.477549889135255,
+        "support": 290.0
+      },
+      "weighted avg": {
+        "precision": 0.6483273288728769,
+        "recall": 0.7310344827586207,
+        "f1-score": 0.6758200168208578,
+        "support": 290.0
+      }
+    },
+    "xgb_classification_report": null
+  },
+  {
+    "modality": "GSR",
+    "n_features": 4,
+    "rf_cv_accuracy": 0.7582288401253919,
+    "rf_cv_f1_macro": 0.5391654135724362,
+    "rf_test_accuracy": 0.7482758620689656,
+    "rf_test_f1_macro": 0.506423258958756,
+    "rf_model_path": "C:\\Users\\alfiy\\ByteBuzz\\Notebooks\\models\\baseline_GSR_rf_20251017_224420.joblib",
+    "xgb_cv_accuracy": null,
+    "xgb_cv_f1_macro": null,
+    "xgb_test_accuracy": null,
+    "xgb_test_f1_macro": null,
+    "xgb_model_path": null,
+    "rf_classification_report": {
+      "0": {
+        "precision": 0.3333333333333333,
+        "recall": 0.10606060606060606,
+        "f1-score": 0.16091954022988506,
+        "support": 66.0
+      },
+      "1": {
+        "precision": 0.7806691449814126,
+        "recall": 0.9375,
+        "f1-score": 0.8519269776876268,
+        "support": 224.0
+      },
+      "accuracy": 0.7482758620689656,
+      "macro avg": {
+        "precision": 0.557001239157373,
+        "recall": 0.521780303030303,
+        "f1-score": 0.506423258958756,
+        "support": 290.0
+      },
+      "weighted avg": {
+        "precision": 0.678861684399436,
+        "recall": 0.7482758620689656,
+        "f1-score": 0.6946632160593132,
+        "support": 290.0
+      }
+    },
+    "xgb_classification_report": null
+  },
+  {
+    "modality": "FACE",
+    "n_features": 9,
+    "rf_cv_accuracy": 0.7469659650694134,
+    "rf_cv_f1_macro": 0.48305442687092726,
+    "rf_test_accuracy": 0.7448275862068966,
+    "rf_test_f1_macro": 0.48492703533026116,
+    "rf_model_path": "C:\\Users\\alfiy\\ByteBuzz\\Notebooks\\models\\baseline_FACE_rf_20251017_224420.joblib",
+    "xgb_cv_accuracy": null,
+    "xgb_cv_f1_macro": null,
+    "xgb_test_accuracy": null,
+    "xgb_test_f1_macro": null,
+    "xgb_model_path": null,
+    "rf_classification_report": {
+      "0": {
+        "precision": 0.2777777777777778,
+        "recall": 0.07575757575757576,
+        "f1-score": 0.11904761904761904,
+        "support": 66.0
+      },
+      "1": {
+        "precision": 0.7757352941176471,
+        "recall": 0.9419642857142857,
+        "f1-score": 0.8508064516129032,
+        "support": 224.0
+      },
+      "accuracy": 0.7448275862068966,
+      "macro avg": {
+        "precision": 0.5267565359477124,
+        "recall": 0.5088609307359307,
+        "f1-score": 0.48492703533026116,
+        "support": 290.0
+      },
+      "weighted avg": {
+        "precision": 0.6624070317782286,
+        "recall": 0.7448275862068966,
+        "f1-score": 0.6842682345463214,
+        "support": 290.0
+      }
+    },
+    "xgb_classification_report": null
+  },
+  {
+    "modality": "OTHER",
+    "n_features": 25,
+    "rf_cv_accuracy": 0.7434990297059263,
+    "rf_cv_f1_macro": 0.5933516638518173,
+    "rf_test_accuracy": 0.7586206896551724,
+    "rf_test_f1_macro": 0.6127136752136753,
+    "rf_model_path": "C:\\Users\\alfiy\\ByteBuzz\\Notebooks\\models\\baseline_OTHER_rf_20251017_224420.joblib",
+    "xgb_cv_accuracy": null,
+    "xgb_cv_f1_macro": null,
+    "xgb_test_accuracy": null,
+    "xgb_test_f1_macro": null,
+    "xgb_model_path": null,
+    "rf_classification_report": {
+      "0": {
+        "precision": 0.45652173913043476,
+        "recall": 0.3181818181818182,
+        "f1-score": 0.375,
+        "support": 66.0
+      },
+      "1": {
+        "precision": 0.8155737704918032,
+        "recall": 0.8883928571428571,
+        "f1-score": 0.8504273504273504,
+        "support": 224.0
+      },
+      "accuracy": 0.7586206896551724,
+      "macro avg": {
+        "precision": 0.636047754811119,
+        "recall": 0.6032873376623377,
+        "f1-score": 0.6127136752136753,
+        "support": 290.0
+      },
+      "weighted avg": {
+        "precision": 0.7338584805957676,
+        "recall": 0.7586206896551724,
+        "f1-score": 0.7422266430887121,
+        "support": 290.0
+      }
+    },
+    "xgb_classification_report": null
+  }
+]

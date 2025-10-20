@@ -1,0 +1,6 @@
+modality,n_features,rf_cv_accuracy,rf_cv_f1_macro,rf_test_accuracy,rf_test_f1_macro,rf_model_path,xgb_cv_accuracy,xgb_cv_f1_macro,xgb_test_accuracy,xgb_test_f1_macro,xgb_model_path
+EEG,12,0.7607963875205255,0.4419177959732382,0.7620689655172413,0.4324853228962818,C:\Users\alfiy\ByteBuzz\Notebooks\models\baseline_EEG_rf_20251017_224420.joblib,,,,,
+EYE,4,0.730594118525153,0.4963561980439678,0.7310344827586207,0.477549889135255,C:\Users\alfiy\ByteBuzz\Notebooks\models\baseline_EYE_rf_20251017_224420.joblib,,,,,
+GSR,4,0.7582288401253919,0.5391654135724362,0.7482758620689656,0.506423258958756,C:\Users\alfiy\ByteBuzz\Notebooks\models\baseline_GSR_rf_20251017_224420.joblib,,,,,
+FACE,9,0.7469659650694134,0.48305442687092726,0.7448275862068966,0.48492703533026116,C:\Users\alfiy\ByteBuzz\Notebooks\models\baseline_FACE_rf_20251017_224420.joblib,,,,,
+OTHER,25,0.7434990297059263,0.5933516638518173,0.7586206896551724,0.6127136752136753,C:\Users\alfiy\ByteBuzz\Notebooks\models\baseline_OTHER_rf_20251017_224420.joblib,,,,,

@@ -1,0 +1,9 @@
+{
+  "baseline_acc": 0.7758620689655172,
+  "baseline_f1": 0.5976606689291584,
+  "simclr_linprobe_acc": 0.7620689655172413,
+  "simclr_linprobe_f1": 0.5927214996641632,
+  "encoder_path": "C:\\Users\\alfiy\\ByteBuzz\\Notebooks\\models\\simclr_encoder_20251017_233616.pt",
+  "proj_path": "C:\\Users\\alfiy\\ByteBuzz\\Notebooks\\models\\simclr_proj_20251017_233616.pt",
+  "linprobe_path": "C:\\Users\\alfiy\\ByteBuzz\\Notebooks\\models\\simclr_linprobe_20251017_233616.joblib"
+}

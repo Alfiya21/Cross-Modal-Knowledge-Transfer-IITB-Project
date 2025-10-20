@@ -1,0 +1,13 @@
+{
+  "timestamp": "20251017_224955",
+  "n_classes": 2,
+  "temperature": 2.0,
+  "teacher_accuracy": 0.7689655172413793,
+  "teacher_f1_macro": 0.4983346673207508,
+  "student_accuracy": 0.7758620689655172,
+  "student_f1_macro": 0.5976606689291584,
+  "teacher_models": [
+    "rf"
+  ],
+  "student_model_path": "C:\\Users\\alfiy\\ByteBuzz\\Notebooks\\models\\student_logreg_20251017_224955.joblib"
+}

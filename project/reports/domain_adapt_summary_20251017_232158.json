@@ -1,0 +1,16 @@
+{
+  "timestamp": "20251017_232158",
+  "n_src": 1014,
+  "n_tgt": 434,
+  "baseline_acc": 0.6267281105990783,
+  "baseline_f1": 0.5819777397260274,
+  "coral_acc": 0.7695852534562212,
+  "coral_f1": 0.5970287836583101,
+  "dann_acc": 0.42626728110599077,
+  "dann_f1": 0.4243571919395305,
+  "notes": {
+    "domain_column_used": "__domain__",
+    "target_column": "Label",
+    "domain_construction": "synthetic"
+  }
+}

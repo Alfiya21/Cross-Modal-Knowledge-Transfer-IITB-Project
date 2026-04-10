@@ -1,92 +1,147 @@
-# Cross-Modal-Knowledge-Transfer-IITB-Project
-# T1_G21_ByteBuzz
+# Cross-Modal Knowledge Transfer for Emotion & Engagement Recognition
+### IIT Bombay Affective Computing Research Lab | Research Internship (Jun–Sep 2025)
 
-## Project Overview
-Track: Educational Data Analysis (EDA)  
-Internship:IITB EdTech Internship 2025, with DYPCET  
-Group ID:T1_G21  
-Group Name: ByteBuzz  
-Group Leader:Alfiya Aslam Mulla  
-Faculty Mentor:Mrs. Sushama S Takmare  
-Department: Data Science  
+> **Intern:** Part of Team ByteBuzz (T1_G21) — IITB EdTech Internship 2025 with DYPCET  
+> **Track:** Educational Data Analysis (EDA) | **Problem ID:** 15  
+> **Faculty Mentor:** Mrs. Sushama S. Takmare | **Department:** Data Science
 
+---
 
-## Assigned Problem
-Problem ID: 15 — Cross-Modal Knowledge Transfer  
+## Overview
 
-# Objective
-Use EEG to train a model and test if eye-tracking or GSR-only models can approximate it (domain adaptation or modality dropout).
+This project investigates whether lightweight physiological modalities (eye-tracking, GSR) can approximate the predictive power of EEG for student emotion and engagement recognition — using **cross-modal knowledge distillation** and **domain adaptation** techniques.
 
-# Advanced Objective
-Implement adversarial domain adaptation or contrastive learning.
+The core research question: *Can a student model trained on cheaper, less intrusive signals (eye-tracking or GSR) learn to replicate the richer representations learned by a teacher model trained on EEG?*
 
-## Problem Workflow
+**Result:** Achieved **77.24% classification accuracy** and **0.6133 macro F1 score** on benchmark datasets using a teacher-student knowledge distillation framework.
 
-### Step 1: Understand and Prepare the Data
-#### 1.1 Identify Target and Inputs
-- Target:Task accuracy (binary: Correct/Incorrect) or engagement level (from `PSY.csv`)
-- Teacher Modality:EEG (`EEG.csv`)
-- Student Modalities:Eye-tracking (`EYE.csv`, `IVT.csv`), GSR (`GSR.csv`), and Facial expressions (`TIVA.csv`)
+---
 
-#### 1.2 Data Organization Strategy
-- Per-Trial Basis:Synchronize features from all four modalities per trial.  
-- Teacher-Student Pairs:Pair teacher (EEG) and student (Eye-tracking/GSR) features from the same trial.
+## Key Results
 
+| Model | Modality | Accuracy | Macro F1 |
+|-------|----------|----------|----------|
+| Teacher (Baseline) | EEG | — | — |
+| Student (KD) | Eye-tracking / GSR | **0.7724** | **0.6133** |
 
+- **Feature space:** 54-dimensional statistical feature vectors from multimodal physiological signals
+- **Signals used:** EEG, Galvanic Skin Response (GSR), Eye-tracking, Facial Expressions
+- **Framework:** Teacher-Student Knowledge Distillation (soft label + hard label training)
 
-### Step 2: Preprocessing Pipeline
-#### 2.1 Feature Extraction
-- EEG: Mean and variance of Delta, Theta, Alpha, Beta, Gamma bands  
-- Eye-tracking: Average fixation duration, saccade amplitude, mean pupil size  
-- GSR: Mean conductance, slopes, recovery rates  
-- Facial Expressions: Average AU intensities or emotion probabilities  
+---
 
-#### 2.2 Feature Alignment
-- **Normalization:** z-score normalization for consistent scaling  
-- **Dimensionality Reduction:** PCA for comparable lower-dimensional representations  
+## Technical Architecture
 
-#### 2.3 Label Encoding
-- Encode target as:
-  - Correct = 1, Incorrect = 0  
-  - Engagement: Low = 0, Medium = 1, High = 2  
+### Modalities & Data Sources
 
+| Signal | File | Features Extracted |
+|--------|------|--------------------|
+| EEG (Teacher) | `EEG.csv` | Mean & variance of Delta, Theta, Alpha, Beta, Gamma bands |
+| Eye-tracking (Student) | `EYE.csv`, `IVT.csv` | Fixation duration, saccade amplitude, pupil size |
+| GSR (Student) | `GSR.csv` | Mean conductance, slopes, recovery rates |
+| Facial Expressions (Student) | `TIVA.csv` | AU intensities, emotion probabilities |
+| Labels | `PSY.csv` | Task accuracy (binary), engagement level (3-class) |
 
-### Step 3: Modeling Approaches
-#### 3.1 Baseline (Single-Modality Models)
-- Train teacher model (e.g., XGBoost) on EEG  
-- Train student models on Eye, GSR, and Facial data individually  
-- Compare metrics (Accuracy, F1-score) for baseline performance  
+### Pipeline
 
-#### 3.2 Knowledge Transfer (Teacher → Student)
-- Use **knowledge distillation**:
-  - EEG model acts as teacher  
-  - Student model (e.g., Eye-tracking) learns using both hard labels and teacher’s soft predictions  
-  - Add distillation loss to student training objective  
+```
+Raw Multimodal Data
+        │
+        ▼
+Feature Extraction (per trial, per modality)
+        │
+        ▼
+Preprocessing: z-score normalization → PCA (dimensionality reduction)
+        │
+        ▼
+Label Encoding: Correct/Incorrect (binary) | Low/Medium/High engagement
+        │
+   ┌────┴─────┐
+   ▼          ▼
+Teacher     Student
+(EEG)    (Eye / GSR)
+   │          │
+   └──► Knowledge Distillation (soft labels + hard labels)
+              │
+              ▼
+        Evaluation: Accuracy, F1, ROC-AUC, KL Divergence
+              │
+              ▼
+        SHAP Interpretability
+```
 
-#### 3.3 Domain Adaptation Approaches
-- Adversarial Domain Adaptation:
-  - Feature extractor and domain discriminator setup  
-  - Feature extractor learns domain-invariant embeddings  
-- Contrastive Learning:
-  - Learn shared embeddings: pull together features from same trial, push apart features from different trials  
+---
 
+## Methodology
 
-### Step 4: Evaluation & Interpretation
-#### 4.1 Metrics
-- Compare student vs. teacher Accuracy, F1-score, ROC-AUC  
-- Evaluate domain alignment via KL divergence or cosine similarity
+### 1. Baseline — Single-Modality Models
+- Trained an **XGBoost teacher** on EEG features
+- Trained standalone student models on Eye-tracking, GSR, and Facial data
+- Established benchmark accuracy and F1 scores across modalities
 
-#### 4.2 Interpretability
-- Identify most predictive features after knowledge transfer  
-- Apply SHAP for feature-level interpretability  
+### 2. Knowledge Distillation (Teacher → Student)
+- EEG model generates **soft probability distributions** (soft labels) over classes
+- Student model trained on a combined loss:
+  - **Hard label loss** (ground truth)
+  - **Distillation loss** (KL divergence from teacher's soft outputs)
+- Enables the student model to learn richer decision boundaries from the teacher
 
+### 3. Domain Adaptation (Advanced Objectives)
+- **Adversarial Domain Adaptation:** Feature extractor + domain discriminator to learn modality-invariant embeddings
+- **Contrastive Learning:** Pull together embeddings from the same trial across modalities; push apart embeddings from different trials
 
+### 4. Evaluation & Interpretability
+- Metrics: Accuracy, Macro F1, ROC-AUC
+- Alignment: KL divergence, cosine similarity between teacher & student feature spaces
+- Interpretability: **SHAP values** to identify most predictive features post-distillation
 
-### Step 5: Experiment and Improve
-- Test modality combinations (EEG ↔ Eye, EEG ↔ GSR, EEG ↔ Facial)  
-- Apply modality dropout during multimodal model training  
-- Explore pretraining and fine-tuning strategies  
-- Compare classic distillation vs. adversarial and contrastive learning  
+---
 
+## Experiments
 
+| Experiment | Description |
+|------------|-------------|
+| EEG ↔ Eye-tracking | Distillation from EEG teacher to eye-tracking student |
+| EEG ↔ GSR | Distillation from EEG teacher to GSR student |
+| EEG ↔ Facial | Distillation from EEG teacher to facial expression student |
+| Modality Dropout | Randomly drop modalities during multimodal training for robustness |
+| Classic KD vs. Adversarial | Compare standard distillation against adversarial domain adaptation |
+| Pretraining + Fine-tuning | Explore transfer learning strategies across modalities |
 
+---
+
+## Tech Stack
+
+- **Languages:** Python
+- **ML Libraries:** XGBoost, scikit-learn, PyTorch / TensorFlow
+- **Signal Processing:** NumPy, SciPy (band-power extraction, filtering)
+- **Interpretability:** SHAP
+- **Visualization:** Matplotlib, Seaborn
+- **Dimensionality Reduction:** PCA (scikit-learn)
+
+---
+
+## Skills Demonstrated
+
+- Multimodal physiological signal processing (EEG, GSR, eye-tracking)
+- Knowledge distillation and model compression
+- Domain adaptation (adversarial training, contrastive learning)
+- Feature engineering (54-dimensional statistical vectors)
+- Deep learning model optimization
+- Statistical analysis and experimental reporting
+- Affective computing and educational data analysis
+
+---
+
+## Project Info
+
+| Field | Details |
+|-------|---------|
+| Internship | IITB EdTech Internship 2025 |
+| Host Institution | Indian Institute of Technology (IIT) Bombay — Affective Computing Research Lab |
+| Collaborating Institute | DYPCET |
+| Group | T1_G21 — ByteBuzz |
+| Group Leader | Alfiya Aslam Mulla |
+| Mentor | Mrs. Sushama S. Takmare |
+| Track | Educational Data Analysis (EDA) |
+| Duration | June 2025 – September 2025 |
